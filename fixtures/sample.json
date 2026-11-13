@@ -1,0 +1,49 @@
+{
+  "tables": {
+    "a": [
+      {
+        "a.k": 1,
+        "a.v": "x"
+      },
+      {
+        "a.k": 2,
+        "a.v": "y"
+      }
+    ],
+    "b": [
+      {
+        "b.k": 1,
+        "b.v": "ok"
+      }
+    ]
+  },
+  "schemas": {
+    "a": [
+      "a.k",
+      "a.v"
+    ],
+    "b": [
+      "b.k",
+      "b.v"
+    ]
+  },
+  "stats": {},
+  "plan": {
+    "op": "join",
+    "kind": "left",
+    "left": {
+      "op": "scan",
+      "table": "a"
+    },
+    "right": {
+      "op": "scan",
+      "table": "b"
+    },
+    "on": [
+      [
+        "a.k",
+        "b.k"
+      ]
+    ]
+  }
+}
