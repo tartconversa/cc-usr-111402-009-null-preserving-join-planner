@@ -13,7 +13,7 @@ def evaluate(data,plan):
     kind=plan['kind'];result=[]
     if kind not in ('inner','left','semi','anti'):raise ValueError('未知联接')
     for a in left:
-        matches=[b for b in right if all(a.get(x) is not None and b.get(y) is not None and a[x]==b[y] for x,y in plan['on'])]
+        matches=[b for b in right if all(a.get(x) is not None and b.get(y) is not None and type(a[x]) is type(b[y]) and a[x]==b[y] for x,y in plan['on'])]
         if kind in ('inner','left'):
             result.extend({**a,**b} for b in matches)
             if kind=='left' and not matches:result.append({**a,**dict.fromkeys(rs)})
