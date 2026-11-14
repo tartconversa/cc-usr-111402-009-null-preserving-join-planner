@@ -8,6 +8,13 @@ fixtures/sample.json全部为合成资料，不对应真实机构的排放记录
 
     python -m app.service fixtures/sample.json
 
+运行优化器(合法重排、代价选择与对照执行，契约见docs/data-contract.md优化器扩展)：
+
+    python -m app.optimizer fixtures/sample.json
+    python -m app.optimizer --budget 500 fixtures/sample.json
+
+程序化入口app.service.inspect_optimized(data, budget)返回input_digest、result及optimization报告。
+
 执行现有行为检查：
 
     python -m unittest discover -s tests -v
